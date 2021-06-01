@@ -18,6 +18,8 @@ requirements:
   host:
     - python >=3.7
     - pip
+    - setuptools
+    - wheel
 
   run:
     - python >=3.7
@@ -30,10 +32,22 @@ requirements:
 test:
   imports:
     - dask
+    - dask.array
+    - dask.bag
+    - dask.bytes
+    - dask.dataframe
+    - dask.dataframe.io
+    - dask.dataframe.tseries
+    - dask.diagnostics
+  requires:
+    - pip
+  commands:
+    - pip ckeck
 
 about:
   home: http://github.com/dask/dask/
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
   summary: Parallel Python with task scheduling
   doc_url: https://dask.org/

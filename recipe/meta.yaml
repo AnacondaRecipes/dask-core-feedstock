@@ -32,13 +32,6 @@ requirements:
 test:
   imports:
     - dask
-    - dask.array
-    - dask.bag
-    - dask.bytes
-    - dask.dataframe
-    - dask.dataframe.io
-    - dask.dataframe.tseries
-    - dask.diagnostics
   requires:
     - pip
   commands:

@@ -37,6 +37,9 @@ test:
   commands:
     - pip check
 
+#Note: The build and dependency order for dask-distributed packages are as follows.
+#      dask-core --->distributed --->dask
+
 about:
   home: http://github.com/dask/dask/
   license: BSD-3-Clause

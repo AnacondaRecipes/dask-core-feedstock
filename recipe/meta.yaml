@@ -1,4 +1,4 @@
-{% set version = "2021.8.0" %}
+{% set version = "2021.9.1" %}
 
 package:
   name: dask-core
@@ -7,7 +7,7 @@ package:
 source:
   fn: dask-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 3d4c7f4c29f20ed8ee7bc4ed98b7fb8384accd9a1a166716392d81db9d9e2782
+  sha256: e11f2bf2cac809e5408fc107dcf727af3bc3472160f206cb4b828211396ad65c
 
 build:
   number: 0
@@ -23,9 +23,9 @@ requirements:
 
   run:
     - python >=3.7
-    - packaging >=20.0
     - cloudpickle >=1.1.1
     - fsspec >=0.6.0
+    - packaging >=20.0
     - partd >=0.3.10
     - pyyaml
     - toolz >=0.8.2

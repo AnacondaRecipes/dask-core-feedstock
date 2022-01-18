@@ -42,7 +42,7 @@ test:
 #      dask-core --->distributed --->dask
 
 about:
-  home: http://github.com/dask/dask/
+  home: https://github.com/dask/dask/
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt

@@ -29,6 +29,7 @@ requirements:
     - partd >=0.3.10
     - pyyaml
     - toolz >=0.8.2
+    - locket
 
 test:
   imports:

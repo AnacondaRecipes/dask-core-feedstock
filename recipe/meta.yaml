@@ -33,6 +33,7 @@ test:
   imports:
     - dask
   requires:
+    - locket
     - pip
   commands:
     - pip check

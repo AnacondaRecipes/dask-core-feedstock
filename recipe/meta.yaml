@@ -16,23 +16,29 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
     - setuptools
     - wheel
-
   run:
-    - python >=3.7
+    - python >=3.8
     - cloudpickle >=1.1.1
     - fsspec >=0.6.0
     - packaging >=20.0
     - partd >=0.3.10
-    - pyyaml
+    - pyyaml >=5.3.1
     - toolz >=0.8.2
 
 test:
   imports:
     - dask
+    - dask.array
+    - dask.bag
+    - dask.bytes
+    - dask.dataframe
+    - dask.dataframe.io
+    - dask.dataframe.tseries
+    - dask.diagnostics
   requires:
     - pip
   commands:
@@ -42,7 +48,7 @@ test:
 #      dask-core --->distributed --->dask
 
 about:
-  home: http://github.com/dask/dask/
+  home: https://github.com/dask/dask/
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt

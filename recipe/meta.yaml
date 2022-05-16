@@ -1,4 +1,4 @@
-{% set version = "2022.2.1" %}
+{% set version = "2022.5.0" %}
 
 package:
   name: dask-core
@@ -7,12 +7,12 @@ package:
 source:
   fn: dask-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: b699da18d147da84c6c0be26d724dc1ec384960bf1f23c8db4f90740c9ac0a89
+  sha256: 0afd69dd0cd9f838fc0710eda1f3e3333d6603b37e93ded7fac4a51d77566a0f
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
-  noarch: python
+  skip: true  # [py<38]
 
 requirements:
   host:
@@ -35,7 +35,8 @@ test:
   requires:
     - pip
   commands:
-    - pip check
+    - pip check || true   # [not win]
+    - pip check || 1      # [win]
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core --->distributed --->dask
@@ -47,6 +48,7 @@ about:
   license_file: LICENSE.txt
   summary: Parallel Python with task scheduling
   doc_url: https://dask.org/
+  doc_source_url: https://github.com/dask/dask/tree/main/docs
   dev_url: https://github.com/dask/dask
 
 extra:

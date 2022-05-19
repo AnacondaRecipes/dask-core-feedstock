@@ -1,2 +1,2 @@
 channels: 
-  - cbouss: dask_dev 
+  cbouss: dask_dev 

@@ -1,18 +1,19 @@
 {% set name = "dask-core" %}
-{% set version = "2023.3.2" %}
+{% set version = "2023.4.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: dask-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 51009e92ba9a280bd417633d1ae84f3ed23a8940f0a19594a4b7797ef226fff4
+  sha256: 33e752c1960d4987cd5aaa03c15d82df7725815771b8e21f4f6b5d4e4ec69e0e
+  entry_points:
+    - dask = dask.__main__:main
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<38]
 
 requirements:
@@ -21,6 +22,8 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - versioneer 0.28
+    - tomli
   run:
     - python
     - click >=7.0

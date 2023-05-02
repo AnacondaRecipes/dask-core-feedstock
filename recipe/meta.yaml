@@ -23,7 +23,7 @@ requirements:
     - setuptools
     - wheel
     - versioneer 0.28
-    - tomli
+    - tomli 2.0.1
   run:
     - python
     - click >=7.0

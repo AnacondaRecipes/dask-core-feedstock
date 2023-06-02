@@ -16,6 +16,9 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<39]
 
+# Please note the repo used is the same as `dask`
+# Only the minimum reqs needed to build `dask` go here
+# Optional dependencies should exist in `dask` recipe
 requirements:
   host:
     - python
@@ -28,7 +31,7 @@ requirements:
     - python
     - click >=8.0
     - cloudpickle >=1.5.0
-    - fsspec >=0.9.0
+    - fsspec >=2021.09.0
     - packaging >=20.0
     - partd >=1.2.0
     - pyyaml >=5.3.1

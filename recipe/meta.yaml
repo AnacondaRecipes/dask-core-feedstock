@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2023.4.1" %}
+{% set version = "2023.5.1" %}
 
 package:
   name: {{ name }}
@@ -7,15 +7,18 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 9dc72ebb509f58f3fe518c12dd5a488c67123fdd66ccb0b968b34fd11e512153
+  sha256: d1b988526012ac2896ace302347e23c003504f8baa69d106b75bd442f089495a
   entry_points:
     - dask = dask.__main__:main
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<38]
+  skip: true  # [py<39]
 
+# Please note the repo used is the same as `dask`
+# Only the minimum reqs needed to build `dask` go here
+# Optional dependencies should exist in `dask` recipe
 requirements:
   host:
     - python
@@ -26,13 +29,13 @@ requirements:
     - tomli 2.0.1
   run:
     - python
-    - click >=7.0
-    - cloudpickle >=1.1.1
-    - fsspec >=0.6.0
+    - click >=8.0
+    - cloudpickle >=1.5.0
+    - fsspec >=2021.09.0
     - packaging >=20.0
     - partd >=1.2.0
     - pyyaml >=5.3.1
-    - toolz >=0.8.2
+    - toolz >=0.10.0
     - importlib-metadata >=4.13.0
 
 test:
@@ -48,7 +51,7 @@ test:
 #      dask-core --->distributed --->dask
 
 about:
-  home: https://github.com/dask/dask/
+  home: https://www.dask.org/
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt

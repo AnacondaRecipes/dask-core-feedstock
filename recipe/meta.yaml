@@ -44,8 +44,7 @@ test:
   requires:
     - pip
   commands:
-    - pip check || true   # [not win]
-    - pip check || 1      # [win]
+    - pip check
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core --->distributed --->dask

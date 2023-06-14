@@ -71,5 +71,5 @@ extra:
     - sinhrks
     - tomaugspurger
     - jrbourbeau
-  skip-lint:
+  skip-lints:
     - python_build_tool_in_run

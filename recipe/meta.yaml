@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2023.11.0" %}
+{% set version = "2024.5.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 06b8f39755d37ff6ef4db422774db1f1d5d6788d33f0628c80861dc6452f878c
+  sha256: 324f94cdcd93831d24579021b063a2821099c4d51ec094dbc17e0d3ad1d3d351
   entry_points:
     - dask = dask.__main__:main
 
@@ -25,7 +25,7 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - versioneer
+    - versioneer 0.29
     - tomli
   run:
     - python
@@ -36,7 +36,7 @@ requirements:
     - partd >=1.2.0
     - pyyaml >=5.3.1
     - toolz >=0.10.0
-    - importlib-metadata >=4.13.0
+    - importlib-metadata >=4.13.0  # [py<312]
 
 test:
   imports:
@@ -73,3 +73,4 @@ extra:
     - jrbourbeau
   skip-lints:
     - python_build_tool_in_run
+    - host_section_needs_exact_pinnings

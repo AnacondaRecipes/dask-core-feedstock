@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2024.5.0" %}
+{% set version = "2024.8.2" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 324f94cdcd93831d24579021b063a2821099c4d51ec094dbc17e0d3ad1d3d351
+  sha256: 1d05e09166ac7927a54401e998aa1599e86aac666edbdaeb3096bf4b957029e0
   entry_points:
     - dask = dask.__main__:main
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 # Please note the repo used is the same as `dask`
 # Only the minimum reqs needed to build `dask` go here
@@ -30,10 +30,10 @@ requirements:
   run:
     - python
     - click >=8.1
-    - cloudpickle >=1.5.0
+    - cloudpickle >=3.0.0
     - fsspec >=2021.09.0
     - packaging >=20.0
-    - partd >=1.2.0
+    - partd >=1.4.0
     - pyyaml >=5.3.1
     - toolz >=0.10.0
     - importlib-metadata >=4.13.0  # [py<312]
@@ -47,7 +47,7 @@ test:
     - pip check
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
-#      dask-core --->distributed --->dask
+#      dask-core ---> dask-expr --->distributed --->dask
 
 about:
   home: https://www.dask.org/

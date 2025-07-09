@@ -23,9 +23,9 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
+    - setuptools >=62.6
     - wheel
-    - versioneer 0.29
+    - versioneer >=0.29
     - tomli
   run:
     - python

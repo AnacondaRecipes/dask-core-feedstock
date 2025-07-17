@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2025.2.0" %}
+{% set version = "2025.5.1" %}
 
 package:
   name: {{ name }}
@@ -7,9 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 89c87125d04d28141eaccc4794164ce9098163fd22d8ad943db48f8d4c815460
-  entry_points:
-    - dask = dask.__main__:main
+  sha256: 979d9536549de0e463f4cab8a8c66c3a2ef55791cd740d07d9bf58fab1d1076a
 
 build:
   number: 0
@@ -23,8 +21,8 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
     - wheel
+    - setuptools >=62.6
     - versioneer 0.29
     - tomli
   run:
@@ -41,16 +39,16 @@ requirements:
 test:
   imports:
     - dask
-  requires:
-    - pip
   commands:
     - pip check
+  requires:
+    - pip
 
 #Note: The build and dependency order for dask-distributed packages are as follows.
 #      dask-core ---> dask-expr --->distributed --->dask
 
 about:
-  home: https://www.dask.org/
+  home: https://www.dask.org
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt

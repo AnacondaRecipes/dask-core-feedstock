@@ -1,13 +1,13 @@
 {% set name = "dask-core" %}
-{% set version = "2025.5.1" %}
+{% set version = "2025.7.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/d/dask/dask-{{ version }}.tar.gz
-  sha256: 979d9536549de0e463f4cab8a8c66c3a2ef55791cd740d07d9bf58fab1d1076a
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name.split('-')[0] }}/{{ name.split('-')[0] }}-{{ version }}.tar.gz
+  sha256: c3a0d4e78882e85ea81dbc71e6459713e45676e2d17e776c2f3f19848039e4cf
 
 build:
   number: 0
@@ -36,6 +36,8 @@ requirements:
     - toolz >=0.10.0
     - importlib-metadata >=4.13.0  # [py<312]
 
+# Tests must be added in the dask recipe:
+# https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
 test:
   imports:
     - dask
@@ -44,8 +46,8 @@ test:
   requires:
     - pip
 
-#Note: The build and dependency order for dask-distributed packages are as follows.
-#      dask-core ---> dask-expr --->distributed --->dask
+# Note: The build and dependency order for dask-distributed packages are as follows.
+# dask-core -> dask-expr -> distributed -> dask
 
 about:
   home: https://www.dask.org

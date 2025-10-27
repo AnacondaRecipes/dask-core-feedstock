@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2025.9.1" %}
+{% set version = "2025.10.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name.split('-')[0] }}/{{ name.split('-')[0] }}-{{ version }}.tar.gz
-  sha256: 718df73e1fd3d7e2b8546e0f04ce08e1ed7f9aa3da1eecd0c1f44c8b6d52f7e0
+  sha256: fd3159c319c27cea39b891c0f22d60056a33575fb4906618eab0aeeb5dcd0cbc
 
 build:
   number: 0
@@ -56,14 +56,13 @@ test:
 # dask-core -> dask-expr -> distributed -> dask
 
 about:
-  home: https://www.dask.org
+  home: https://github.com/dask/dask
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
   summary: Parallel Python with task scheduling
-  description: |
-    Dask is a flexible parallel computing library for analytics.
-  doc_url:  https://docs.dask.org
+  description: Dask is a flexible parallel computing library for analytics.
+  doc_url: https://docs.dask.org
   dev_url: https://github.com/dask/dask
 
 extra:

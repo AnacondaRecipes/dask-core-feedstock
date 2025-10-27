@@ -56,14 +56,13 @@ test:
 # dask-core -> dask-expr -> distributed -> dask
 
 about:
-  home: https://www.dask.org
+  home: https://github.com/dask/dask
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
   summary: Parallel Python with task scheduling
-  description: |
-    Dask is a flexible parallel computing library for analytics.
-  doc_url:  https://docs.dask.org
+  description: Dask is a flexible parallel computing library for analytics.
+  doc_url: https://docs.dask.org
   dev_url: https://github.com/dask/dask
 
 extra:

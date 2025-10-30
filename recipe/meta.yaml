@@ -10,9 +10,11 @@ source:
   sha256: fd3159c319c27cea39b891c0f22d60056a33575fb4906618eab0aeeb5dcd0cbc
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  number: 2
   skip: true  # [py<310]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  entry_points:
+    - dask = dask.__main__:main
 
 # Please note the repo used is the same as `dask`
 # Only the minimum reqs needed to build `dask` go here

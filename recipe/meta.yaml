@@ -25,7 +25,6 @@ requirements:
     - pip
     - setuptools >=80
     - tomli
-    # https://github.com/dask/dask/issues/12182
     - setuptools-scm >=9
   run:
     - python

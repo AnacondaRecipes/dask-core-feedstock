@@ -34,7 +34,7 @@ requirements:
     - packaging >=20.0
     - partd >=1.4.0
     - pyyaml >=5.3.1
-    - toolz >=0.10.0
+    - toolz >=0.12.0
     - importlib-metadata >=4.13.0  # [py<312]
 
 # Tests must be added in the dask recipe:

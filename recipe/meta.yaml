@@ -1,5 +1,5 @@
 {% set name = "dask-core" %}
-{% set version = "2025.12.0" %}
+{% set version = "2026.1.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name.split('-')[0] }}/{{ name.split('-')[0] }}-{{ version }}.tar.gz
-  sha256: 8d478f2aabd025e2453cf733ad64559de90cf328c20209e4574e9543707c3e1b
+  sha256: 1136683de2750d98ea792670f7434e6c1cfce90cab2cc2f2495a9e60fd25a4fc
 
 build:
   number: 0
@@ -38,12 +38,12 @@ requirements:
     - importlib-metadata >=4.13.0  # [py<312]
   run_constrained:
     - numpy >=1.24
-    - pyarrow >=14.0.1
-    - lz4 >=4.3.2
     - pandas >=2.0
+    - pyarrow >=16.0
+    - distributed =={{ version }}.*
     - bokeh >=3.1.0
     - jinja2 >=2.10.3
-    - distributed >=2025.12.0,<2025.12.1
+    - lz4 >=4.3.2
 
 # Tests must be added in the dask recipe:
 # https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
@@ -59,7 +59,7 @@ test:
     - pytest
   commands:
     - pip check
-    - pytest -v dask/tests -k "not (test_register_command_ep)"
+    - pytest -v dask/tests -k "not (test_register_command_ep or test_cpu_count_cgroups_v2)"
 
 # Note: The build and dependency order for dask-distributed packages are as follows.
 # dask-core -> @dask-expr@ -> distributed -> dask

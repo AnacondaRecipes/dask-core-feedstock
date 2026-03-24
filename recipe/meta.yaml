@@ -1,13 +1,21 @@
 {% set name = "dask-core" %}
-{% set version = "2026.1.2" %}
+{% set version = "2026.3.0" %}
 
+# Please note the repo used is the same as `dask`
+# Only the minimum reqs needed to build `dask` go here
+# Optional dependencies should exist in `dask` recipe
+# Tests must be added in the dask recipe:
+# https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
+# Note: The build and dependency order for dask-distributed packages are as follows.
+# dask-core -> @dask-expr@ -> distributed -> dask
+# dask-core removed from the host section inside the dask-expr. Please check future releases, it may be returned.
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name.split('-')[0] }}/{{ name.split('-')[0] }}-{{ version }}.tar.gz
-  sha256: 1136683de2750d98ea792670f7434e6c1cfce90cab2cc2f2495a9e60fd25a4fc
+  sha256: f7d96c8274e8a900d217c1ff6ea8d1bbf0b4c2c21e74a409644498d925eb8f85
 
 build:
   number: 0
@@ -16,9 +24,6 @@ build:
   entry_points:
     - dask = dask.__main__:main
 
-# Please note the repo used is the same as `dask`
-# Only the minimum reqs needed to build `dask` go here
-# Optional dependencies should exist in `dask` recipe
 requirements:
   host:
     - python
@@ -45,8 +50,6 @@ requirements:
     - jinja2 >=2.10.3
     - lz4 >=4.3.2
 
-# Tests must be added in the dask recipe:
-# https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
 test:
   source_files:
     - dask/tests
@@ -61,9 +64,6 @@ test:
     - pip check
     - pytest -v dask/tests -k "not (test_register_command_ep or test_cpu_count_cgroups_v2)"
 
-# Note: The build and dependency order for dask-distributed packages are as follows.
-# dask-core -> @dask-expr@ -> distributed -> dask
-# dask-core removed from the host section inside the dask-expr. Please check future releases, it may be returned.
 about:
   home: https://github.com/dask/dask
   license: BSD-3-Clause

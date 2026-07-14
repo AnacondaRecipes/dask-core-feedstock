@@ -1,13 +1,21 @@
 {% set name = "dask-core" %}
-{% set version = "2026.6.0" %}
+{% set version = "2026.7.1" %}
 
+# Please note the repo used is the same as `dask`
+# Only the minimum reqs needed to build `dask` go here
+# Optional dependencies should exist in `dask` recipe
+# Tests must be added in the dask recipe:
+# https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
+# Note: The build and dependency order for dask-distributed packages are as follows.
+# dask-core -> @dask-expr@ -> distributed -> dask
+# dask-core removed from the host section inside the dask-expr. Please check future releases, it may be returned.
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name.split('-')[0] }}/{{ name.split('-')[0] }}-{{ version }}.tar.gz
-  sha256: ae3436bd31ebce2be75edf952bd1fc687a1f11ec03fe8b1bec2903d222344a45
+  sha256: 5727484427665f051e86bf87d021a64d6411141cdc8a20bfe3c1ad2968cc06b7
 
 build:
   number: 0
@@ -16,9 +24,6 @@ build:
   entry_points:
     - dask = dask.__main__:main
 
-# Please note the repo used is the same as `dask`
-# Only the minimum reqs needed to build `dask` go here
-# Optional dependencies should exist in `dask` recipe
 requirements:
   host:
     - python
@@ -39,13 +44,11 @@ requirements:
     - numpy >=1.24
     - pandas >=2.0
     - pyarrow >=16.0
-    - distributed =={{ version }}.*
+    - distributed >=2026.7.1,<2026.7.2
     - bokeh >=3.1.0
     - jinja2 >=2.10.3
     - lz4 >=4.3.2
 
-# Tests must be added in the dask recipe:
-# https://github.com/AnacondaRecipes/dask-feedstock/blob/master/recipe/meta.yaml
 test:
   source_files:
     - dask/tests
@@ -60,9 +63,6 @@ test:
     - pip check
     - pytest -v dask/tests -k "not (test_register_command_ep or test_cpu_count_cgroups_v2)"
 
-# Note: The build and dependency order for dask-distributed packages are as follows.
-# dask-core -> @dask-expr@ -> distributed -> dask
-# dask-core removed from the host section inside the dask-expr. Please check future releases, it may be returned.
 about:
   home: https://github.com/dask/dask
   license: BSD-3-Clause
